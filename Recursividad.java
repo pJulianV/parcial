@@ -6,10 +6,16 @@ public class Recursividad {
 		// implementación aquí 
         // primero con un sout y un imput le pedimos al usuario que nos de string
         // segundo pasamos ese string a un array    
+        char[] letras = texto.toCharArray();
+
         // luego con un for recorremos el array desde el final hasta el inicio y vamos concatenando los caracteres en una nueva variable
+        String resultado = "";
+        for (int i = letras.length - 1; i >= 0; i--) {
+            resultado = resultado + letras[i];
+        }
+
         // finalmente retornamos la variable con la cadena invertida
-        
-        return "";
+        return resultado;
 	}
 
     public static void main(String[] args) {

@@ -22,9 +22,34 @@ public class InventarioEliminacionLogica {
    
         // Completar implementación
         // primero leemos el archivo línea por línea
-        // segundo verificamos si la línea contiene el producto a eliminar
-        // luego si encontramos el producto, agregamos un '#' al inicio de la línea para marcarlo como eliminado
-        // .. finalmente escribimos el contenido actualizado de nuevo en el archivo, sobrescribiendo el original
+        String contenido = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(nombreArchivo));
+            String linea = br.readLine();
+            while (linea != null) {
+
+                // segundo verificamos si la línea contiene el producto a eliminar
+                // luego si encontramos el producto, agregamos un '#' al inicio de la línea para marcarlo como eliminado
+                if (linea.startsWith(productoEliminar)) {
+                    linea = "#" + linea;
+                }
+
+                contenido = contenido + linea + "\n";
+                linea = br.readLine();
+            }
+            br.close();
+        } catch (IOException e) {
+            System.out.println("Error al leer: " + e.getMessage());
+        }
+
+        // finalmente escribimos el contenido actualizado de nuevo en el archivo, sobrescribiendo el original
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo));
+            bw.write(contenido);
+            bw.close();
+        } catch (IOException e) {
+            System.out.println("Error al escribir: " + e.getMessage());
+        }
         // finalmente tenemos el archivo con el producto marcado como eliminado
         // ARCHIVOS 
 // Se tiene un archivo de texto llamado inventario.txt que contiene los productos disponibles 
@@ -43,7 +68,23 @@ public class InventarioEliminacionLogica {
         
         // explicacion unicamente como comentario (solo se comentara explcacion logica)
         // entonces  leemos el archivo original y verificamos que registros no estan marcados como eliminados
-        // luego escribimos esos registros en el nuevo archivo
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(archivoOriginal));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(archivoNuevo));
+            String linea = br.readLine();
+            while (linea != null) {
+                if (!linea.startsWith("#")) {
+                    // luego escribimos esos registros en el nuevo archivo
+                    bw.write(linea);
+                    bw.newLine();
+                }
+                linea = br.readLine();
+            }
+            br.close();
+            bw.close();
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
         // entonces tenemos un nuevo archivo sin los productos eliminados
 
         // finalmente tenemos un nuevo archivo sin los productos eliminados

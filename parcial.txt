@@ -1,0 +1,59 @@
+Parcial Momento l
+Manejo de archivos y recursividad
+RECURSIVIDAD 
+Implementa una función recursiva en Java que reciba una cadena de texto como parámetro y 
+retorne la misma cadena pero invertida. La función debe llamar a sí misma reduciendo la 
+cadena en cada llamada hasta llegar a una condición base.
+1. El algoritmo debe tomar la cadena y, en cada llamada recursiva, tomar el primer carácter y 
+colocarlo al final, mientras que invierte el resto de la cadena. La condición base ocurre 
+cuando la cadena está vacía o tiene un solo carácter, en cuyo caso retorna la misma 
+cadena.
+Dada la función:
+public static String invertirCadena(String texto) { 
+// implementación aquí 
+} 
+Y la función de uso:
+public static void main(String[] args) { 
+ String original = "Recursividad"; 
+ String invertida = invertirCadena(original); 
+ System.out.println("Original: " + original); 
+ System.out.println("Invertida: " + invertida); 
+} 
+Input:
+Hola 
+recursividad 
+a 
+Output:
+aloH 
+dadivisrucer 
+a 
+ARCHIVOS 
+Se tiene un archivo de texto llamado inventario.txt que contiene los productos disponibles 
+en la tienda con el siguiente formato (producto, cantidad, precio):
+Camiseta,50,15000 
+Pantalón,30,25000 
+Zapatos,20,40000 
+Gorra,15,10000 
+1. Permitir al usuario ingresar el nombre de un producto para eliminarlo lógicamente.
+2. Marcar el registro como eliminado agregando un prefijo, por ejemplo, # al inicio de la línea:
+# Pantalón,30,25000
+3. Crear un nuevo archivo inventario_actualizado.txt que incluya todos los productos 
+excepto los eliminados.
+4. Mostrar en consola el contenido del archivo original antes y después de la eliminación, y 
+luego el archivo actualizado.
+Ejemplo:
+1. Se tiene el archivo:
+Camiseta,50,15000 
+Pantalón,30,25000 
+Zapatos,20,40000 
+Gorra,15,10000 
+2. Usuario elimina “Pantalón"
+3. Se visualiza el archivo con marcado de eliminación:
+Camiseta,50,15000 
+#Pantalón,30,25000 
+Zapatos,20,40000 
+Gorra,15,10000 
+3. Archivo actualizado sin eliminados:
+Camiseta,50,15000 
+Zapatos,20,40000 
+Gorra,15,10000 
